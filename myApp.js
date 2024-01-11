@@ -1,27 +1,26 @@
 let express = require('express');
-// let http = require('http');
 let app = express();
 
-// let’s serve our first string! In Express,
-//  routes takes the following structure: app.METHOD(PATH, HANDLER).
-// METHOD is an http method in lowercase.
-// PATH is a relative path on the server(it can be a string, or even a regular expression).
-// HANDLER is a function that Express calls when the route is matched.
-// Handlers take the form function(req, res) {... }, where req is the request object, and
-// res is the response object.For example, the handler
+// adding some kind of information. A middleware needs to be mounted using the method app.use(path, middlewareFunction).
+//  The first path argument is optional.If you don’t pass it, the middleware will be executed for all requests.
 
-// function(req, res) {
-//   res.send('Response String');
-// }
-// will serve the string 'Response String'.
-// app.get('/views/index.html', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'views', 'index.html'));
-// })
+// Mount the express.static() middleware to the path /public with app.use().
+//  The absolute path to the assets folder is __dirname + /public.
+
+// Now your app should be able to serve a CSS stylesheet.
+//  Note that the / public / style.css file is referenced in the / views / index.html in the project boilerplate.
+// Your front - page should look a little better now!
+
+
 
 app.get('/', (req, res) => {
+
+  app.use("/public", express.static(__dirname + "/public"));
     // Send the "views/index.html" file as a response
     res.sendFile(__dirname + "/views/index.html");
 });
+
+
   
 console.log("Hello World")
 
