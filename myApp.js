@@ -20,9 +20,9 @@ let app = express();
 
 app.get('/', (req, res) => {
     // Send the "views/index.html" file as a response
-    res.sendFile(__dirname, 'views', 'index.html');
-  });
-
+    res.sendFile(__dirname + "/public/index.html");
+});
+  
 console.log("Hello World")
 
  module.exports = app;
