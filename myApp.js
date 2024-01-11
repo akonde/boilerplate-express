@@ -14,45 +14,10 @@ let app = express();
 //   res.send('Response String');
 // }
 // will serve the string 'Response String'.
-app.get('/', (req, res) => {
+app.get('/views/index.html', (req, res) => {
     res.send("Hello Express")
 })
 
 console.log("Hello World")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  module.exports = app;
