@@ -15,7 +15,7 @@ let app = express();
 // }
 // will serve the string 'Response String'.
 app.get('/views/index.html', (req, res) => {
-    res.send("Hello Express")
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 })
 
 console.log("Hello World")
