@@ -9,23 +9,19 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
   
 });
-
-// app.get('/json', (req, res) => {
-  
-//   app.use("/json", express.static(__dirname + "/json"));
-//   // Send the "views/index.html" file as a response
-//   const messageStyle = process.env.MESSAGE_STYLE || 'uppercase';
-//   const message = (messageStyle === 'uppercase') ? 'HELLO JSON' : 'Hello json'; 
-//   res.json({ "message": "Hello json" })
-//   console.log("testing server")
-// });
-
 app.get('/json', (req, res) => {
-  // Access process.env.MESSAGE_STYLE and transform the message accordingly
-  const messageStyle = process.env.MESSAGE_STYLE || 'uppercase';
-  const message = (messageStyle === 'uppercase') ? 'HELLO JSON' : 'Hello json';
+  // Access MESSAGE_STYLE from environment variables
+  const messageStyle = process.env.MESSAGE_STYLE;
 
-  // Respond with a JSON object
+  // Set the default message
+  let message = 'Hello json';
+
+  // Depending on MESSAGE_STYLE, transform the message
+  if (messageStyle === 'uppercase') {
+    message = message.toUpperCase();
+  }
+
+  // Send the response object
   res.json({ message });
 });
 
