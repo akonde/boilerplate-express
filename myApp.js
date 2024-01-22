@@ -1,14 +1,10 @@
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
+
+// Load environment variables
 require('dotenv').config();
 
-app.get('/', (req, res) => {
-
-  app.use("/public", express.static(__dirname + "/public"));
-    // Send the "views/index.html" file as a response
-  res.sendFile(__dirname + "/views/index.html");
-  
-});
+// Define your /json GET route handler
 app.get('/json', (req, res) => {
   // Access MESSAGE_STYLE from environment variables
   const messageStyle = process.env.MESSAGE_STYLE;
@@ -21,9 +17,10 @@ app.get('/json', (req, res) => {
     message = message.toUpperCase();
   }
 
-  // Send the response object
+  // Send the JSON response
   res.json({ message });
 });
+
 
 console.log("Hello World")
  module.exports = app;
