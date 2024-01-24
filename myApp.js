@@ -7,22 +7,22 @@ require('dotenv').config();
 // Define your /json GET route handler
 app.get('/json', (req, res) => {
     // Access MESSAGE_STYLE from environment variables
-  const messageStyle = process.env.MESSAGE_STYLE;
+    const messageStyle = process.env.MESSAGE_STYLE;
 
-  // Set the default message
-  let message = 'Hello json'.toUpperCase();
+    // Set the default message
+    let message = 'Hello json';
 
-  // Depending on MESSAGE_STYLE, transform the message
-  if (messageStyle === 'uppercase') {
-    message = message.toUpperCase();
-  } else {
-    message = 'Hello json';
-  }
+    // Depending on MESSAGE_STYLE, transform the message
+    if (messageStyle === 'uppercase') {
+        message = message.toUpperCase();
+        console.log("TESTING")
+    } else {
+        message = 'hello json';
+    }
 
-  // Send the JSON response
-  res.json({ message });
+    // Send the JSON response
+    res.json({ message });
 });
 
-
 console.log("Hello World")
- module.exports = app;
+module.exports = app;
